@@ -1,0 +1,6 @@
+{
+  "id": 1,
+  "class": "TestEntity",
+  "tenant": "Some tenant",
+  "myField": "Some value"
+}
