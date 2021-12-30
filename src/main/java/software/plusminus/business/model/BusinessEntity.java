@@ -10,10 +10,6 @@ import org.hibernate.annotations.ParamDef;
 import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.LastModifiedDate;
 import software.plusminus.audit.annotation.Auditable;
-import software.plusminus.generator.BusinessTypescriptGenerator;
-import software.plusminus.generator.Generate;
-import software.plusminus.json.model.Classable;
-import software.plusminus.json.model.Jsog;
 import software.plusminus.softdelete.annotation.SoftDelete;
 import software.plusminus.tenant.annotation.Tenant;
 
@@ -37,8 +33,7 @@ import javax.persistence.Version;
 @FilterDef(name = "softDeleteFilter")
 @Filter(name = "softDeleteFilter", condition = "deleted = false")
 @Auditable
-@Generate(BusinessTypescriptGenerator.class)
-public abstract class BusinessEntity implements Classable, Jsog {
+public abstract class BusinessEntity extends BusinessObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
