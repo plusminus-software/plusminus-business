@@ -86,6 +86,11 @@
         </dependency>
         <dependency>
             <groupId>software.plusminus</groupId>
+            <artifactId>plusminus-sync</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>software.plusminus</groupId>
             <artifactId>plusminus-jwt</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

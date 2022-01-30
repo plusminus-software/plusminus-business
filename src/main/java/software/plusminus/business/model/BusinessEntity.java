@@ -15,6 +15,7 @@ import software.plusminus.generator.Generate;
 import software.plusminus.json.model.Classable;
 import software.plusminus.json.model.Jsog;
 import software.plusminus.softdelete.annotation.SoftDelete;
+import software.plusminus.sync.annotation.Syncable;
 import software.plusminus.tenant.annotation.Tenant;
 
 import java.time.ZonedDateTime;
@@ -37,6 +38,7 @@ import javax.persistence.Version;
 @FilterDef(name = "softDeleteFilter")
 @Filter(name = "softDeleteFilter", condition = "deleted = false")
 @Auditable
+@Syncable
 @Generate(BusinessTypescriptGenerator.class)
 public abstract class BusinessEntity implements Classable, Jsog {
 
