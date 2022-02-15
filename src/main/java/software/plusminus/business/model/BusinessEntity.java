@@ -9,6 +9,7 @@ import org.hibernate.annotations.FilterDef;
 import org.hibernate.annotations.ParamDef;
 import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import software.plusminus.audit.annotation.Auditable;
 import software.plusminus.generator.BusinessTypescriptGenerator;
 import software.plusminus.generator.Generate;
@@ -20,6 +21,7 @@ import software.plusminus.tenant.annotation.Tenant;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 import javax.persistence.Column;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,6 +34,7 @@ import javax.persistence.Version;
 @ToString(of = "id")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
 @FilterDef(name = "tenantFilter", parameters = @ParamDef(name = "tenant", type = "string"))
 @Filter(name = "tenantFilter", condition = "tenant = :tenant")
 @FilterDef(name = "softDeleteFilter")
