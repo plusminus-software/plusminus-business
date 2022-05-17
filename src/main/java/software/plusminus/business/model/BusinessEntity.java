@@ -16,6 +16,7 @@ import software.plusminus.generator.Generate;
 import software.plusminus.json.model.ApiObject;
 import software.plusminus.softdelete.annotation.SoftDelete;
 import software.plusminus.sync.annotation.Syncable;
+import software.plusminus.sync.annotation.Uuid;
 import software.plusminus.tenant.annotation.Tenant;
 
 import java.time.ZonedDateTime;
@@ -48,6 +49,7 @@ public abstract class BusinessEntity implements ApiObject {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @Uuid
     @Column(unique = true, updatable = false)
     @Type(type = "uuid-char")
     private UUID uuid;
