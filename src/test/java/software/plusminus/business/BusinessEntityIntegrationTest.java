@@ -50,7 +50,7 @@ public class BusinessEntityIntegrationTest {
     private TestEntity entity2;
     private TestEntity entity3;
     private TestEntity entityWithUnknownTenant;
-    private TestEntity entityWithNullTenant;
+    private TestEntity entityWithEmptyTenant;
     private TestEntity deletedEntity;
 
     @Before
@@ -67,9 +67,9 @@ public class BusinessEntityIntegrationTest {
         entityWithUnknownTenant.setId(null);
         entityWithUnknownTenant.setTenant("Unknown tenant");
 
-        entityWithNullTenant = readTestEntity();
-        entityWithNullTenant.setId(null);
-        entityWithNullTenant.setTenant(null);
+        entityWithEmptyTenant = readTestEntity();
+        entityWithEmptyTenant.setId(null);
+        entityWithEmptyTenant.setTenant("");
 
         deletedEntity = readTestEntity();
         deletedEntity.setId(null);
@@ -79,9 +79,9 @@ public class BusinessEntityIntegrationTest {
         entity3.setId(null);
         entity3.setTenant("localhost");
 
-        doReturn("localhost", "localhost", "Unknown tenant", null, null, "Some tenant", "localhost")
+        doReturn("localhost", "localhost", "Unknown tenant", "", "Some tenant", "localhost")
                 .when(tenantService).currentTenant();
-        Stream.of(entity1, entity2, entityWithUnknownTenant, entityWithNullTenant, deletedEntity, entity3)
+        Stream.of(entity1, entity2, entityWithUnknownTenant, entityWithEmptyTenant, deletedEntity, entity3)
                 .forEach(entityManager::persist);
         doCallRealMethod().when(tenantService).currentTenant();
     }
