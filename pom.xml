@@ -91,7 +91,7 @@
         </dependency>
         <dependency>
             <groupId>software.plusminus</groupId>
-            <artifactId>plusminus-jwt</artifactId>
+            <artifactId>plusminus-security</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <!-- Test -->
