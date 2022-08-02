@@ -13,9 +13,9 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
-import software.plusminus.authentication.AuthenticationParameters;
 import software.plusminus.check.util.JsonUtils;
 import software.plusminus.jwt.service.JwtGenerator;
+import software.plusminus.security.Security;
 import software.plusminus.tenant.service.TenantService;
 
 import java.util.Collections;
@@ -103,10 +103,10 @@ public class BusinessEntityIntegrationTest {
     }
 
     private String generateToken() {
-        AuthenticationParameters parameters = AuthenticationParameters.builder()
-                .otherParameters(Collections.singletonMap("tenant", "localhost"))
+        Security security = Security.builder()
+                .others(Collections.singletonMap("tenant", "localhost"))
                 .build();
-        return jwtGenerator.generateAccessToken(parameters);
+        return jwtGenerator.generateAccessToken(security);
     }
 
 }
