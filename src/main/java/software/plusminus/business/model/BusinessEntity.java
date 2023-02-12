@@ -8,11 +8,11 @@ import org.hibernate.annotations.Filter;
 import org.hibernate.annotations.FilterDef;
 import org.hibernate.annotations.ParamDef;
 import org.hibernate.annotations.Type;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import software.plusminus.audit.annotation.Auditable;
 import software.plusminus.generator.BusinessTypescriptGenerator;
 import software.plusminus.generator.Generate;
+import software.plusminus.jpa.listeners.annotation.ModificationTime;
 import software.plusminus.json.model.ApiObject;
 import software.plusminus.softdelete.annotation.SoftDelete;
 import software.plusminus.sync.annotation.Syncable;
@@ -67,7 +67,7 @@ public abstract class BusinessEntity implements ApiObject {
     @Version
     private Long version;
 
-    @LastModifiedDate
+    @ModificationTime
     private ZonedDateTime modifiedTime;
 
 }

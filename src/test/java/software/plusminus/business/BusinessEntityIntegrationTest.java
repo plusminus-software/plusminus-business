@@ -1,6 +1,7 @@
 package software.plusminus.business;
 
 import org.hamcrest.core.Is;
+import org.hamcrest.core.IsNull;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -94,6 +95,7 @@ public class BusinessEntityIntegrationTest {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.content.length()", Is.is(3)))
                 .andExpect(jsonPath("$.content[0].id", Is.is(1)))
+                .andExpect(jsonPath("$.content[0].modifiedTime", IsNull.notNullValue()))
                 .andExpect(jsonPath("$.content[1].id", Is.is(2)))
                 .andExpect(jsonPath("$.content[2].id", Is.is(6)));
     }
