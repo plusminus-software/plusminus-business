@@ -52,7 +52,7 @@ public abstract class BusinessEntity implements ApiObject {
     @Uuid
     @Column(unique = true, updatable = false)
     @Type(type = "uuid-char")
-    private UUID uuid;
+    private UUID uuid = UUID.randomUUID();
 
     /* Can be used for branching like spokusasnu:master, spokusasnu:draft */
     /* Can be used for partitioning like spokusasnu(partition-1), spokusasnu(partition-2) */
